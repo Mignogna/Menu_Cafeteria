@@ -114,23 +114,23 @@ addressInput.addEventListener("input", function (event) {
 })
 finishOrder.addEventListener("click", function () {
     const isOpen = checkRestaurantOpen();
-    if(!isOpen) {
+    if (!isOpen) {
         Toastify({
-            text: "Ooops! O restaurante está fechado!",
+            text: "Ooops! O restaurante está fechado agora.",
             duration: 3000,
-                   close: true,
-            gravity: "top", 
-            position: "right", 
+            close: true,
+            gravity: "top",
+            position: "right",
             stopOnFocus: true,
             style: {
-              background: "#ff0000",
-              color:"#fff8dc",
-              border:"2px solid #fff8dc",
-              outline:"2px solid #ff0000"
+                background: "#ff0000",
+                color: "#fff8dc",
+                border: "2px solid #fff8dc",
+                outline: "2px solid #ff0000",
             },
-          
-          }).showToast();
-          return;
+
+        }).showToast();
+        return;
     }
     if (orderItems.length === 0) return;
     if (addressInput.value === "") {
@@ -138,7 +138,7 @@ finishOrder.addEventListener("click", function () {
         return;
     }
     const orderCompleted = orderItems.map((item) => {
-        return(
+        return (
             `${item.name} Qtd:${item.quantity} R$ ${item.price} / `
         )
     }).join("")
@@ -146,7 +146,7 @@ finishOrder.addEventListener("click", function () {
     const phone = "5511982362156";
 
     window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank");
-    orderItems=[];
+    orderItems = [];
     renderFoodItems();
 });
 
@@ -158,10 +158,10 @@ function checkRestaurantOpen() {
 const scheduleHour = document.querySelector(".store-hours");
 const isOpen = checkRestaurantOpen();
 const overlay = document.querySelector(".overlay");
-if(isOpen){
-    overlay.style.display= "none"
+if (isOpen) {
+    overlay.style.display = "none"
     scheduleHour.style.color = "#f3c740";
-}else{
+} else {
     overlay.style.display = "block"
     scheduleHour.style.color = "#ff0000";
     scheduleHour.style.textShadow = "1px 1px 3px #f3c740"
